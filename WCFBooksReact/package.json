@@ -1,0 +1,18 @@
+{
+  "name": "wcfbooks-react",
+  "version": "0.0.0",
+  "description": "WCFBooksReact",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "path": "^0.12.7",
+    "react": "^16.8.6",
+    "react-dom": "^16.6.0",
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.1.2"
+  }
+}

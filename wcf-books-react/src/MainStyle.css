@@ -1,0 +1,229 @@
+﻿html, body {
+    text-align: justify;
+    overflow-x: hidden;
+}
+
+.main-container {
+    position: relative;
+    max-width: 100vw;
+    display: inline-block;
+    padding: 0;
+}
+
+.search-filters > .title-selector {
+    margin-top: 1em;
+}
+
+.search-filters > .title-selector > input {
+    min-width: 20rem;
+    min-height: 2rem;
+    border-radius: 5px;
+    padding-left: 0.5em;
+    border: 1px solid lightgrey;
+}
+
+.search-filters > .title-selector > button {
+    min-height: 2rem;
+    min-width: 5rem;
+    border-radius: 3px;
+    border: 1px solid grey;
+    background-color: transparent;
+    margin-left: 1em;
+
+    transition: transform 150ms;
+}
+
+.search-filters > .title-selector > button:hover {
+    background-color: lightblue;
+    transform: scale(1.1, 1.1);
+}
+
+.search-filters > .title-selector > button:active {
+    background-color: dodgerblue;
+}
+
+.book-list {
+    margin: 3em 0em 0.5em 0em;
+    text-align: center;
+}
+
+.requests {
+    display: flex;
+    margin-bottom: 1em;
+    margin-top: 2em;
+}
+
+.response-content {
+    padding: 0.5em 0.5em 0.5em 0.5rem;
+    width: 40vw;
+    margin-right: 0.2em;
+    margin-left: 0.2em;
+    border: 2px solid lightgrey;
+    text-align: left;
+
+    overflow-x: scroll;
+}
+
+.response-content:hover {
+    border: 2px solid grey;
+}
+
+.book-field {
+    position: relative;
+    max-width: 100%;
+    min-height: 5em;
+    margin: 0 5rem 0em 5rem;
+
+    border: 1px black solid;
+    border-radius: 5px;
+    margin-bottom: 0.5em;
+}
+
+.book-field > p {
+    position: absolute;
+}
+
+.book-field > .book-title {
+    left: 5%;
+    top: 0%;
+}
+
+.book-field > .book-author {
+    left: 5%;
+    bottom: 0%;
+}
+
+.book-field > .book-publisher {
+    left: 40%;
+    bottom: 0%;
+}
+
+.book-field > .book-publish-year {
+    left: 40%;
+    top: 0%;
+}
+
+.book-field > .book-action-btns {
+    position: absolute;
+    display: flex;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 5%;
+}
+
+.book-action-btns {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.book-action-btns > .button {
+    min-height: 1.5rem;
+    min-width: 2.5rem;
+    border-radius: 3px;
+    border: 1px solid grey;
+    background-color: transparent;
+    margin-left: 1em;
+
+    transition: 
+        transform 150ms,
+        background-color 550ms;
+}
+
+.book-action-btns > #remove-button {
+    background-color: indianred;
+}
+
+.book-action-btns > #remove-button:hover {
+    background-color: darkred;
+}
+
+.book-action-btns > #remove-button:active {
+    background-color: red;
+}
+
+.book-action-btns > #more-button {
+    background-color: lightgreen;
+}
+
+.book-action-btns > #more-button:hover {
+    background-color: mediumseagreen;
+}
+
+.book-action-btns > #more-button:active {
+    background-color: seagreen;
+}
+
+.book-action-btns > .button:hover {
+    transform: scale(1.2, 1.2);
+}
+
+.add-book-dialog {
+    position: absolute;
+    display: block;
+    width: 50vw;
+    min-height: 10vh;
+    left: 50%;
+    top: 40%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: white;
+    border: 1px black solid;
+    border-radius: 5px;
+
+    padding: 1rem 0.2rem 1rem 0.2rem;
+}
+
+.input-field {
+    margin-top: 0.5rem;
+}
+
+.input-field > label {
+    display: inline-block;
+    margin-right: 5vw;
+    width: 10vw;
+    text-align: right;
+}
+
+.input-field > input {
+    min-width: 20rem;
+    min-height: 2rem;
+    border-radius: 5px;
+    padding-left: 0.5em;
+    border: 1px solid lightgrey;
+}
+
+.input-field > button {
+    min-height: 2rem;
+    min-width: 5rem;
+    border-radius: 3px;
+    border: 1px solid grey;
+    background-color: aliceblue;
+    margin-left: 1em;
+
+    transition: transform 150ms;
+}
+
+.input-field > button:hover {
+    background-color: lightblue;
+    transform: scale(1.1, 1.1);
+}
+
+.input-field > button:active {
+    background-color: dodgerblue;
+}
+
+.input-field > .close-button {
+    background-color: indianred;
+}
+
+.input-field > .close-button:hover {
+    background-color: darkred;
+}
+
+.input-field > .close-button:active {
+    background-color: red;
+}
+
+.add-book-dialog > p {
+    font-size: 2em;
+    margin-top: 0.1em;
+}

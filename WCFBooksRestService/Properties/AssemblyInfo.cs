@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WCFBooksRestService")]
+[assembly: AssemblyTitle("WcfRestService")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WCFBooksRestService")]
+[assembly: AssemblyProduct("WcfRestService")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("9c30a16a-00e4-4439-b1d5-567206000962")]
+[assembly: Guid("5bdbdef2-1eaa-44c4-9331-8256bde5ed48")]
 
 // Version information for an assembly consists of the following four values:
 //
