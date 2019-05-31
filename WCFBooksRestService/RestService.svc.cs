@@ -11,7 +11,8 @@ namespace WcfRestService
     [ServiceBehavior(InstanceContextMode =InstanceContextMode.Single)]
     public class RestService : IRestService
     {
-        private static List<BookEntity> books;
+
+        private static IBooksRepository booksRepository;
 
         private string validateBook(BookEntity book)
         {
@@ -32,17 +33,7 @@ namespace WcfRestService
 
         public RestService()
         {
-            books = new List<BookEntity>()
-            {
-                new BookEntity(1, "Książka 1", 2017, "Nieznany", "Nieznane"),
-                new BookEntity(2, "Książka 2", 2018, "Nieznany", "Nieznane"),
-                new BookEntity(3, "Książka 3", 2019, "Nieznany", "Nieznane")
-            };
-        }
-
-        private long getHighestIndex()
-        {
-            return books.Max(b => b.BookID);
+            booksRepository = new BooksRepository();
         }
 
         public string add(BookEntity book)
@@ -52,22 +43,25 @@ namespace WcfRestService
             if (validation != "OK")
                 return validation;
 
-            book.BookID = getHighestIndex() + 1;
-            books.Add(book);
-            return "Dodano książkę z BookID=" + book.BookID;
+            if(booksRepository.InsertBook(book))
+            {
+                return "Dodano książkę z BookID=" + book.BookID;
+            }
+
+            return "Nie udało się dodać książki";
+
         }
 
         public string remove(string id)
         {
             long BookID = long.Parse(id);
 
-            int bookIndex = books.FindIndex(b => b.BookID == BookID);
-            if (bookIndex < 0)
-                return "Książka z BookID=" + BookID + " nie istnieje!";
+            if (booksRepository.DeleteBook(long.Parse(id)))
+            {
+                return "Usunięto książkę z BookID=" + id;
+            }
 
-            books.RemoveAt(bookIndex);
-
-            return "Usunięto książkę z BookID=" + BookID;
+            return $"Książka z BookID={id} nie istnieje!";
         }
 
         public string addXML(BookEntity book)
@@ -82,7 +76,7 @@ namespace WcfRestService
 
         public List<BookEntity> getAll()
         {
-            return books;
+            return booksRepository.GetBooks();
         }
 
         public List<BookEntity> getAllXML()
@@ -92,13 +86,12 @@ namespace WcfRestService
 
         public BookEntity getById(string id)
         {
-            long BookID = long.Parse(id);
-            int bookIndex = books.FindIndex(b => b.BookID == BookID);
+            BookEntity book = booksRepository.GetBook(long.Parse(id));
 
-            if (bookIndex < 0)
-                throw new Exception("Nie odnaleziono książki z BookID=" + BookID);
+            if (book == null)
+                throw new Exception("Nie odnaleziono książki z BookID=" + id);
 
-            return books[bookIndex];
+            return book;
         }
 
         public BookEntity getByIdXML(string id)
@@ -115,17 +108,12 @@ namespace WcfRestService
             if (validation != "OK")
                 return validation;
 
-            int bookIndex = books.FindIndex(b => b.BookID == BookID);
+            if (booksRepository.UpdateBook(BookID, book))
+            {
+                return "Zaktualizowano książkę z BookID=" + book.BookID;
+            }
 
-            if (bookIndex < 0)
-                return "Książka z BookID=" + BookID + " nie istnieje!";
-
-            book.BookID = BookID;
-
-            books.RemoveAt(bookIndex);
-            books.Add(book);
-
-            return "Zaktualizowano książkę z BookID=" + BookID;
+            return "Nie udało się dodać książki";
         }
 
         public string updateXML(string id, BookEntity book)
@@ -135,7 +123,7 @@ namespace WcfRestService
 
         public List<BookEntity> getByName(string name)
         {
-            return books.FindAll(b => b.BookTitle.Contains(name));
+            return booksRepository.GetBooksByTitle(name);            
         }
 
         public List<BookEntity> getByNameXML(string name)

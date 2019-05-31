@@ -111,6 +111,11 @@ namespace WcfRestService
         [DataMember]
         public int PublishYear;
 
+        public BookEntity()
+        {
+
+        }
+
         public BookEntity(long BookID, string BookTitle, int PublishYear, string Author, string Publisher)
         {
             this.BookID = BookID;
